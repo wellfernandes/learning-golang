@@ -1,5 +1,10 @@
 package calc
 
-func Div(a, b int) int {
-	return a / b
+import "errors"
+
+func Div(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("Denominator cannot be zero.")
+	}
+	return (a / b), nil
 }
