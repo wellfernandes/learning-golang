@@ -13,17 +13,21 @@ func Generate() *cli.App {
 	app := cli.NewApp()
 	app.Name = "Command Line Application"
 	app.Usage = "Find IP and Servers on the Internet"
+
+	// Variable flags
+	flags := []cli.Flag{
+		cli.StringFlag{
+			Name:  "host",
+			Value: "https://wellfernandes.github.io/",
+		},
+	}
+
 	// Receive commands in a slice
 	app.Commands = []cli.Command{
 		{
-			Name:  "ip",
-			Usage: "Search/find IPs on the internet",
-			Flags: []cli.Flag{
-				cli.StringFlag{
-					Name:  "host",
-					Value: "github.com/wellfernandes",
-				},
-			},
+			Name:   "ip",
+			Usage:  "Search/find IPs on the internet",
+			Flags:  flags,
 			Action: findIps,
 		},
 	}
